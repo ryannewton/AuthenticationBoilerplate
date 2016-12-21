@@ -1,0 +1,22 @@
+{
+  "name": "auth-server",
+  "version": "1.0.0",
+  "description": "Boilerplate for an authentication server using JSON Web Tokens",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryannewton/auth-server.git"
+  },
+  "author": "Ryan Newton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryannewton/auth-server/issues"
+  },
+  "homepage": "https://github.com/ryannewton/auth-server#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
