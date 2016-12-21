@@ -12,6 +12,9 @@ exports.signup = function(req, res, next) {
 
 	// Checks if the email address is already registered
 	User.findOne({ email: email }, function(err, existingUser) {
+		// If there was an error checking the database
+		if(err) { return next(err); }
+
 		// If the email was found in the database
 		if(existingUser) {
 			return res.status(422).send({ error: 'Email is in use' });
