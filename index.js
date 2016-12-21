@@ -3,6 +3,11 @@ const http = require('http');
 
 const app = express();
 
+const mongoose = require('mongoose');
+
+// DB Setup
+mongoose.connect('mongodb://localhost:auth/auth');
+
 // Server Setup
 // Sets the server port based on the environment variable, or to a default of 3090
 const port = process.env.PORT || 3090;
