@@ -1,6 +1,7 @@
 const express = require('express');
 const http = require('http');
 const router = require('./router');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -10,6 +11,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:auth/auth');
 
 // Set up routing
+app.use(bodyParser.json({ type: '*/*' }));
 router(app);
 
 // Server Setup
