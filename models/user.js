@@ -7,6 +7,15 @@ const userSchema = new Schema({
 	password: String
 });
 
+// Compare entered password to saved password
+userSchema.methods.comparePassword = function (candidatePassword, callback) {
+	if(candidatePassword === this.password) {
+		callback(null, true);
+	}
+
+	callback(null, false);
+}
+
 // Create the model class
 const ModelClass = mongoose.model('user', userSchema);
 
