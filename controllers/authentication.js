@@ -31,3 +31,8 @@ exports.signup = function(req, res, next) {
 		});
 	});
 }
+
+// Function to be called once the user has already been authenticated
+exports.signin = function(req, res, next) {
+	res.send({ token: "Placeholder, will be replaced with a token" });
+}
