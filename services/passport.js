@@ -22,3 +22,6 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
 		})
 	})
 });
+
+// Connects strategies to passport
+passport.use(localLogin);
