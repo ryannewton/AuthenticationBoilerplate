@@ -13,6 +13,12 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
 		if(!user) { return done(null, false); }
 
 		// check password
-		// TO DO: create function in user model to compare password
+		user.comparePassword(password, function(err, isMatch) {
+			// if the password does not match
+			if(!isMatch) { return(null, false); }
+
+			// if the password does match
+			if(isMatch) { return(null, true); }
+		})
 	})
 });
