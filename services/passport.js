@@ -15,10 +15,10 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
 		// check password
 		user.comparePassword(password, function(err, isMatch) {
 			// if the password does not match
-			if(!isMatch) { return(null, false); }
+			if(!isMatch) { return done(null, false); }
 
 			// if the password does match
-			if(isMatch) { return(null, true); }
+			if(isMatch) { return done(null, true); }
 		})
 	})
 });
