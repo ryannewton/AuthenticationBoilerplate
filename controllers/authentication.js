@@ -37,12 +37,13 @@ exports.signup = function(req, res, next) {
 
 		// Save profile to database
 		user.save(function(err) {
-			res.json({ message: "Profile created" });
+			if(err) { return next(err); }
+			res.json({ token: tokenForUser(user) });
 		});
 	});
 }
 
 // Function to be called once the user has already been authenticated
 exports.signin = function(req, res, next) {
-	res.send({ token: "Placeholder, will be replaced with a token" });
+	res.send({ token: tokenForUser(req.user) });
 }
