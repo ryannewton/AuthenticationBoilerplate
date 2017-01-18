@@ -5,7 +5,7 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const config = require('../config');
 
-// Create local strategy
+// Create local strategy - verifies email/password
 const localOptions = { usernameField: 'email' };
 const localLogin = new LocalStrategy(localOptions, function(email, password, done) {
 	User.findOne({ email: email }, function(err, user) {
@@ -32,7 +32,7 @@ const jwtOptions = {
 	secretOrKey: config.secret
 };
 
-// Create JWT strategy
+// Create JWT strategy - verifies JSON Web Token
 const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
 	User.findById(payload.sub, function(err, user) {
 		if(err) { return done(err, false); }
