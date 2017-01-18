@@ -13,11 +13,11 @@ userSchema.pre('save', function(next) {
 
 	// Generates a salt, then hashes and saves
 	bcrypt.genSalt(10, function(err, salt) {
-		if(err) { return next(err) ;}
+		if(err) { return next(err); }
 
 		// Hash password using the salt
 		bcrypt.hash(user.password, salt, null, function(err, hash) {
-			if(err) { return next(err) ;}
+			if(err) { return next(err); }
 
 			// Overwrite plain text password with hashed password
 			user.password = hash;
@@ -28,11 +28,12 @@ userSchema.pre('save', function(next) {
 
 // Compare entered password to saved password
 userSchema.methods.comparePassword = function (candidatePassword, callback) {
-	if(candidatePassword === this.password) {
-		callback(null, true);
-	}
+	bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+		if(err) { return next(err); }
 
-	callback(null, false);
+		// return the result to the callback
+		callback(null, isMatch);
+	});
 }
 
 // Create the model class
