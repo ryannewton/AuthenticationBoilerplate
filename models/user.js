@@ -13,8 +13,12 @@ userSchema.pre('save', function(next) {
 
 	// Generates a salt, then hashes and saves
 	bcrypt.genSalt(10, function(err, salt) {
+		if(err) { return next(err) ;}
+
 		// Hash password using the salt
 		bcrypt.hash(user.password, salt, null, function(err, hash) {
+			if(err) { return next(err) ;}
+
 			// Overwrite plain text password with hashed password
 			user.password = hash;
 			next();
