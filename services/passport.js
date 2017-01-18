@@ -17,10 +17,10 @@ const localLogin = new LocalStrategy(localOptions, function(email, password, don
 			// if the password does not match
 			if(!isMatch) { return done(null, false); }
 
-			// if the password does match
-			if(isMatch) { return done(null, true); }
-		})
-	})
+			// if the password does match, return the user
+			if(isMatch) { return done(null, user); }
+		});
+	});
 });
 
 // Connects strategies to passport
