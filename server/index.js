@@ -4,6 +4,7 @@ const router = require('./router');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const app = express();
 
@@ -11,7 +12,12 @@ const app = express();
 mongoose.connect('mongodb://localhost:auth/auth');
 
 // Set up routing
+
+// Morgan adds event logging
 app.use(morgan('combined'));
+
+// cors tells the server to allow Cross-Origin Resource Sharing
+app.use(cors());
 app.use(bodyParser.json({ type: '*/*' }));
 router(app);
 
