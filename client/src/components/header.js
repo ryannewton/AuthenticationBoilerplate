@@ -5,8 +5,22 @@ import { Link } from 'react-router';
 class Header extends Component {
 
 	renderLinks() {
-		// If signed in - display 'Sign out' Link
-		// If not signed in - display 'Sign up' and 'Sign in' Links
+		if(this.props.authenticated) {
+			return (
+				<li className="nav-item">
+					<Link className="nav-link" to="/signout">Sign Out</Link>
+				</li>
+			);
+		} else {
+			return [
+				<li className="nav-item">
+					<Link className="nav-link" to="/signin">Sign In</Link>
+				</li>,
+				<li className="nav-item">
+					<Link className="nav-link" to="/signup">Sign Up</Link>
+				</li>
+			];
+		}
 	}
 
 	render() {
