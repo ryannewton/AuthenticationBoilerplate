@@ -3,8 +3,18 @@ import reduxForm from 'redux-form';
 
 class Signin extends Component {
 	render() {
-		<form>
-		</form>
+		return (
+			<form>
+				<fieldset className="form-group">
+					<label>Email:</label>
+					<input className="form-control" />
+				<fieldset className="form-group">
+					<label>Password:</label>
+					<input className="form-control" />
+				</fieldset>
+				<button action="submit" className="btn btn-primary">Sign in</button>
+			</form>
+		);
 	}
 }
 
