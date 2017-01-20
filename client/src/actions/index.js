@@ -29,6 +29,11 @@ export function signinUser({ email, password }) {
 	}
 }
 
+export function signupUser({ email, password }) {
+	return function(dispatch) {
+	}
+}
+
 export function authError(error) {
 	return {
 		type: AUTH_ERROR,
