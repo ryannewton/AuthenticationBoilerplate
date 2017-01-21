@@ -15,6 +15,13 @@ export default function(ComposedComponent) {
 			}
 		}
 
+		componentWillUpdate(nextProps) {
+			// If user signs out, route to home route
+			if(!nextProps.authenticated) {
+				this.context.router.push('/');
+			}
+		}
+
 		render() {
 			return <ComposedComponent {...this.props} />
 		}
