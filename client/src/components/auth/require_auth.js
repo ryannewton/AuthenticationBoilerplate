@@ -1,3 +1,8 @@
+// NOTE: Because state.auth.authenticated is held within the browser, a malicious user could manipulate it
+//  For this reason, this higher order component is intended to provide expected behavior
+//  (i.e. reroutes to /signin when a user clicks on a protected feature)
+// Data is protected from malicious users on the server, which validates a users token before delivering protected data 
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
