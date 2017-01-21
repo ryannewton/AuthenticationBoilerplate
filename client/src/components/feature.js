@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 import requireAuth from './auth/require_auth';
 
 class Feature extends Component {
+	componentWillMount() {
+		this.props.fetchMessage();
+	}
+
 	render() {
 		return (
-			<div>Secret section! Congrats, you're authenticated!</div>
+			<div>{this.props.message}</div>
 		);
 	}
 }
 
-export default requireAuth(Feature);
+function mapStateToProps(state) {
+	return { message: state.auth.message };
+}
+
+export default connect(mapStateToProps, actions)(requireAuth(Feature));
